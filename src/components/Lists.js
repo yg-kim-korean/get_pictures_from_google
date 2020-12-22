@@ -24,12 +24,11 @@ function Lists() {
             setLoading(false);
         }
         fetchLists();
-    },[] );
+    },[list] );
     
     const onHandle = (item) =>{
         
-        setList(item);
-        
+        setList(item)
     }
 
     
@@ -38,21 +37,23 @@ function Lists() {
     if (error) return <div>Error가 발생하였습니다.</div>;
     if (!lists) return null;
     return (
-        <div>
-            <ul className="lists">
-                {lists.map(item => (
-                    <li className="lists__list" key={item.id} onClick={() => onHandle(item)} >
-                        <img className="lists__list__img" src={item.img} alt={item.text} />
-                        <div className="lists__list__text">{item.text}</div>
-                    </li>
-                ))}
-            </ul>
+        <div className="page">
             <div>
+                <ul className="lists">
+                    {lists.map(item => (
+                        <li className="lists__list" key={item.id} onClick={(e) => onHandle(item)} >
+                            <img className="lists__list__img" src={item.img} alt={item.text} />
+                            <div className="lists__list__text">{item.text}</div>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+            
             {
                 list ?
-                    <List className="list" item={list} /> :null
+                    <List  item={list} /> :null
             }
-            </div>
+            
         </div>
     )
 }

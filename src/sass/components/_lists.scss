@@ -1,5 +1,7 @@
-* {
-  align-content: flex;
+.page {
+  display: flex;
+  justify-content: left;
+  align-items: center;
 }
 .lists {
   overflow: hidden;
@@ -40,4 +42,6 @@
 }
 
 .list {
+  width: 50%;
+  box-sizing: border-box;
 }

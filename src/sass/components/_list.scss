@@ -1,10 +1,9 @@
-&__list {
-  float: left;
+.list {
   padding: 0 10px;
   margin-top: 20px;
   box-sizing: border-box;
   flex-direction: column;
-
+  cursor: pointer;
   &__img {
     object-fit: contain;
     width: 100%;

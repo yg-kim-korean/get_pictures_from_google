@@ -2,7 +2,6 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import SearchField from './SearchField'
 import Lists from './Lists'
-import Listss from './Lists copy'
 function Home() {
     return (
         <main className='home'>

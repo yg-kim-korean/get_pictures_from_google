@@ -1,17 +1,20 @@
-import { Button, Modal } from '@material-ui/core';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 function List({item}) {
-  const [list, setList] = useState(null);
-    // const {img,text} = list; 
-    const onHandleList = () => {
+  const [list, setList] = useState(item);
+  
+    
+    const onHandleList = (e) => {
+      // e.preventDefault();
       setList(null)
     }
     return (
-      <div className="list">
-          <img className="list__img" src={item.img} alt={item.text} onClick={()=>onHandleList}  />
+       list ? 
+      <div className="list" onClick={onHandleList} >
+          <img className="list__img" src={item.img} alt={item.text}  />
           <div className="list__text">{item.text}</div>
-      </div>
+      </div> : null
+      
     )
 }
 
