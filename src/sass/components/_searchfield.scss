@@ -1,0 +1,17 @@
+.searchfield {
+  margin-top: 20px;
+  justify-content: center;
+  &__div1 {
+    text-align: center;
+  }
+  &__div2 {
+    display: flex;
+    justify-content: center;
+  }
+  &__input {
+    width: 70%;
+  }
+  &__Button {
+    width: 10%;
+  }
+}

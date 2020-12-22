@@ -1,0 +1,43 @@
+* {
+  align-content: flex;
+}
+.lists {
+  overflow: hidden;
+  align-items: center;
+  margin-top: 10rem;
+  cursor: pointer;
+  &__list {
+    float: left;
+    padding: 0 10px;
+    margin-top: 20px;
+    box-sizing: border-box;
+    flex-direction: column;
+
+    &__img {
+      object-fit: contain;
+      width: 100%;
+      display: block;
+    }
+    &__text {
+      font-size: 12px;
+    }
+  }
+}
+@media (min-width: 1301px) {
+  .lists__list {
+    width: 25%;
+  }
+}
+@media (max-width: 1300px) and (min-width: 601px) {
+  .lists__list {
+    width: 33.33333%;
+  }
+}
+@media (max-width: 600px) {
+  .lists__list {
+    width: 100%;
+  }
+}
+
+.list {
+}
