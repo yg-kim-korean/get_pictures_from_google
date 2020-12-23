@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
-function List({item}) {
-  const [list, setList] = useState(item);
+function List({list}) {
   
+  const onHandleList = (e) => {
     
-    const onHandleList = (e) => {
-      // e.preventDefault();
-      setList(null)
-    }
+  }
     return (
        list ? 
       <div className="list" onClick={onHandleList} >
-          <img className="list__img" src={item.img} alt={item.text}  />
-          <div className="list__text">{item.text}</div>
-      </div> : null
+          <img className="list__img" src={list.img} alt={list.text}  />
+          <div className="list__text">{list.text}</div>
+      </div> : 
+      null
       
     )
 }

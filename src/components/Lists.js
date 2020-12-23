@@ -1,57 +1,40 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getLists } from '../module/lists';
 import List from './List';
 
 function Lists() {
-    const [list, setList] = useState(null);
-    const [lists, setLists] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
-    useEffect(() => {
-        const fetchLists = async () =>{
-            try{
-                //요청 시작시 error와 lists 초기화
-                setError(null);
-                setLists(null);
-                setLoading(true);
-                const response = await axios.get('http://localhost:4000/lists');
-                setLists(response.data);
-            }
-            catch(e)
-            {
-                setError(e);
-            }
-            setLoading(false);
-        }
-        fetchLists();
-    },[list] );
+    const {data, loading, error} = useSelector(state=>state.lists.lists);
     
-    const onHandle = (item) =>{
-        
-        setList(item)
+    const [list,setList] = useState(0);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getLists());
+    }, [dispatch])
+    const onHandle = (item) => {
+        setList(item);
     }
 
-    
-
-    if (loading) return <div>로딩중...</div>;
-    if (error) return <div>Error가 발생하였습니다.</div>;
-    if (!lists) return null;
+    if (loading&&!data) return <div>로딩 중...</div>
+    if (error) return <div>에러 발생</div>
+    if (!data ) return null;
     return (
         <div className="page">
-            <div>
+            
                 <ul className="lists">
-                    {lists.map(item => (
-                        <li className="lists__list" key={item.id} onClick={(e) => onHandle(item)} >
+                    {data.map(item => (
+                        <li className="lists__list" key={item.id} onClick={(e) => {onHandle(item)}} >
                             <img className="lists__list__img" src={item.img} alt={item.text} />
                             <div className="lists__list__text">{item.text}</div>
                         </li>
                     ))}
                 </ul>
-            </div>
             
-            {
+            
+            {   
                 list ?
-                    <List  item={list} /> :null
+                <List  list={list} />:
+                null
             }
             
         </div>

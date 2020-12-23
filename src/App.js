@@ -8,7 +8,6 @@ import './sass/main.scss'
 function App() {
   
   return (
-    
     <Router>
       <Switch>
         <Route exact path="/" component={Home} />
