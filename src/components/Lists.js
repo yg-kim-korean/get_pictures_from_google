@@ -6,13 +6,14 @@ import List from './List';
 function Lists() {
     const {data, loading, error} = useSelector(state=>state.lists.lists);
     
-    const [list,setList] = useState(0);
+    const [id,setId] = useState(0);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getLists());
     }, [dispatch])
-    const onHandle = (item) => {
-        setList(item);
+    const onHandle = (seletedId) => {
+        
+        setId(seletedId);
     }
 
     if (loading&&!data) return <div>로딩 중...</div>
@@ -20,20 +21,20 @@ function Lists() {
     if (!data ) return null;
     return (
         <div className="page">
-            
-                <ul className="lists">
+            <div className="lists">
+                <ul className="lists__ul">
                     {data.map(item => (
-                        <li className="lists__list" key={item.id} onClick={(e) => {onHandle(item)}} >
+                        <li className="lists__list" key={item.id} onClick={(e) => {onHandle(item.id)}} >
                             <img className="lists__list__img" src={item.img} alt={item.text} />
                             <div className="lists__list__text">{item.text}</div>
                         </li>
                     ))}
                 </ul>
-            
+                </div>
             
             {   
-                list ?
-                <List  list={list} />:
+                id ?
+                <List  id={id} />:
                 null
             }
             

@@ -1,9 +1,11 @@
 @import "components/notfound";
-@import "components/searchfield";
+@import "components/searchfieldforsearch";
 @import "components/lists";
 @import "components/list";
+@import "components/searchfieldforhome";
+@import url("https://fonts.googleapis.com/css2?family=Tomorrow:wght@300&display=swap");
 * {
-  font-family: "Poppins", sans-serif;
+  font-family: "Tomorrow", sans-serif;
 }
 body,
 ul,
