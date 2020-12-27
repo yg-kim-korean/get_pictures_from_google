@@ -1,5 +1,6 @@
 import * as listsAPI from '../api/lists';
-import { createPromiseThunk, createPromiseThunkById,
+import * as searchresultAPI from '../api/searchresult';
+import { createPromiseThunk, createPromiseThunkById,createPromiseThunkBySearch,
      handleAsyncActions, handleAsyncActionsById, reducerUtils } from '../lib/asyncUtils';
 import {
     GET_LIST,
@@ -14,6 +15,7 @@ import {
 
 export const getLists = createPromiseThunk(GET_LISTS, listsAPI.getLists);
 export const getList = createPromiseThunkById(GET_LIST, listsAPI.getListById);
+export const getSearchList = createPromiseThunkBySearch(GET_LISTS, searchresultAPI.get_data_list);
 export const clearList = () => ({ type: CLEAR_LIST });
 const initialState={
     lists : reducerUtils.initial(),
@@ -25,7 +27,8 @@ export default function lists(state = initialState, action) {
         case GET_LISTS:
         case GET_LISTS_SUCCESS:
         case GET_LISTS_ERROR:
-            return handleAsyncActions(GET_LISTS,'lists',true)(state,action);
+            // return handleAsyncActions(GET_LISTS,'lists',true)(state,action);
+            return handleAsyncActions(GET_LISTS,'searchlists',true)(state,action);
         case GET_LIST:
         case GET_LIST_SUCCESS:
         case GET_LIST_ERROR:

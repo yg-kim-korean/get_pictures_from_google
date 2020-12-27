@@ -27,12 +27,13 @@ export const createPromiseThunkBySearch = (type, promiseCreator,SearchWord = def
     // 만약 여러 종류의 파라미터를 전달해야하는 상황에서는 객체 타입의 파라미터를 받아오도록 하면됨
     //예: writeComment({postID: 1, text:'댓글내용'});
     return param => async dispatch =>{
-        const word = SearchWord(param)
+        
         //요청시작
-        dispatch({type,word});
+        dispatch({type,param});
         try{
             //결과물의 이름을 payload로 통일
             const payload = await promiseCreator(param);
+            console.log("페이로드"+payload);
             dispatch({ type:SUCCESS, payload})
         }
         catch(error) {
@@ -105,7 +106,7 @@ export const handleAsyncActions = (type,key,keepData = false) =>{
                     [key]: reducerUtils.loading(keepData ? state[key].data : null)
                 }
             case SUCCESS:
-                console.log('성공함' + action.payload);
+                console.log("성공");
                 return {
                     ...state,
                     [key] : reducerUtils.success(action.payload)
@@ -117,43 +118,6 @@ export const handleAsyncActions = (type,key,keepData = false) =>{
                 }
             default:
                 return state
-        }
-    }
-}
-//비동기 ID별로 액션 처리하는 리듀서 생성
-export const handleAsyncActionsBySearchWord = (type,key,keepData = false) =>{
-    const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
-    return (state,action) =>{
-        const SearchWord = action.meta;
-        switch(action.type){
-            case type:
-                return{
-                    ...state,
-                    [key] : {
-                        ...state[key],
-                        [SearchWord] : reducerUtils.loading(
-                            keepData ? state[key][SearchWord] && state[key][SearchWord].data : null
-                        )
-                    }
-                };
-            case SUCCESS:
-                return {
-                    ...state,
-                    [key]:{
-                        ...state[key],
-                        [SearchWord]: reducerUtils.success(action.payload)
-                    }
-                };
-            case ERROR:
-                return {
-                    ...state,
-                    [key]:{
-                        ...state[key],
-                        [SearchWord]: reducerUtils.error(action.payload)
-                    }
-                };
-            default:
-                return state;
         }
     }
 }
