@@ -17,6 +17,7 @@ export const getList = createPromiseThunkById(GET_LIST, listsAPI.getListById);
 export const clearList = () => ({ type: CLEAR_LIST });
 const initialState={
     lists : reducerUtils.initial(),
+    searchlists : reducerUtils.initial(),
     list : {}
 }
 export default function lists(state = initialState, action) {

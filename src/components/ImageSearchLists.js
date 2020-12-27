@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getLists } from '../module/lists';
 import List from './List';
 
-function Lists() {
+function ImageSearchLists() {
     const {data, loading, error} = useSelector(state=>state.lists.lists);
     
     const [id,setId] = useState(0);
@@ -44,4 +44,4 @@ function Lists() {
 
 
 
-export default Lists
+export default ImageSearchLists

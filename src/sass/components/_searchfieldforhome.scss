@@ -54,8 +54,11 @@
     text-align: center;
     padding-top: 10px;
     &__div {
-      padding-left: 30px;
+      padding-left: 40px;
       display: inline-block;
+      &__link {
+        margin-right: 2rem;
+      }
       &__input {
         font-weight: bolder;
         background-color: #eee8ec;

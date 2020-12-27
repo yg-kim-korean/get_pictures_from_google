@@ -23,7 +23,7 @@ function SearchFieldForHome() {
         </div >
         <div className="SearchFieldForHome__div3">
           <div className="SearchFieldForHome__div3__div">
-            <input type="submit" className="SearchFieldForHome__div3__div__input" value="YG Search" />
+            <Link to="/search" className="SearchFieldForHome__div3__div__link"><input type="submit" className="SearchFieldForHome__div3__div__input" value="YG Search" /></Link>
             <input type="submit" className="SearchFieldForHome__div3__div__input" value="I'm Feeling Lucky" />
           </div>
         </div>

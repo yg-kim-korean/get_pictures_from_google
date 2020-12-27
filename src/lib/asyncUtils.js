@@ -18,8 +18,30 @@ export const createPromiseThunk = (type, promiseCreator) => {
         }
     }
 }
+//Promise 기반 thunk를 만들어주는 함수
+const defaultSelector = param => param;
+export const createPromiseThunkBySearch = (type, promiseCreator,SearchWord = defaultSelector) => {
+    const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`]
 
-const defaultIdSelector = param => param;
+    //이 함수는 promiseCreator가 단 하나의 파라미터만 받는다는 전제하에 작성
+    // 만약 여러 종류의 파라미터를 전달해야하는 상황에서는 객체 타입의 파라미터를 받아오도록 하면됨
+    //예: writeComment({postID: 1, text:'댓글내용'});
+    return param => async dispatch =>{
+        const word = SearchWord(param)
+        //요청시작
+        dispatch({type,word});
+        try{
+            //결과물의 이름을 payload로 통일
+            const payload = await promiseCreator(param);
+            dispatch({ type:SUCCESS, payload})
+        }
+        catch(error) {
+            dispatch({ tYpe: ERROR, payload:error, error:true})
+        }
+    }
+}
+
+
 export const createPromiseThunkById = (
     type,
     promiseCreator,
@@ -27,7 +49,7 @@ export const createPromiseThunkById = (
     // 기본값으로는 파라미터를 그대로 id로 사용
     // 하지만 만약 파라미터가 {id: 1, details: true} 형태라면
     // idSelector를 param=> param.id 이런식으로 설정 가능.
-    IdSelector = defaultIdSelector
+    IdSelector = defaultSelector
     )=> {
     const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
 
@@ -95,6 +117,43 @@ export const handleAsyncActions = (type,key,keepData = false) =>{
                 }
             default:
                 return state
+        }
+    }
+}
+//비동기 ID별로 액션 처리하는 리듀서 생성
+export const handleAsyncActionsBySearchWord = (type,key,keepData = false) =>{
+    const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
+    return (state,action) =>{
+        const SearchWord = action.meta;
+        switch(action.type){
+            case type:
+                return{
+                    ...state,
+                    [key] : {
+                        ...state[key],
+                        [SearchWord] : reducerUtils.loading(
+                            keepData ? state[key][SearchWord] && state[key][SearchWord].data : null
+                        )
+                    }
+                };
+            case SUCCESS:
+                return {
+                    ...state,
+                    [key]:{
+                        ...state[key],
+                        [SearchWord]: reducerUtils.success(action.payload)
+                    }
+                };
+            case ERROR:
+                return {
+                    ...state,
+                    [key]:{
+                        ...state[key],
+                        [SearchWord]: reducerUtils.error(action.payload)
+                    }
+                };
+            default:
+                return state;
         }
     }
 }

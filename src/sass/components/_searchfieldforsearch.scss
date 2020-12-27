@@ -20,12 +20,14 @@
     z-index: 3;
     padding: 0 20px;
     &__input {
-      color: #706e6f;
+      color: #252525;
       border: none;
       padding-top: 10px;
       padding-bottom: 10px;
       margin-right: 4px;
       height: 20px;
+      width: 400px;
+
       &:focus {
         outline: none;
       }

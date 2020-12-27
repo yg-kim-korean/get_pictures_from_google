@@ -1,7 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import SearchFieldForSearch from './SearchFieldForSearch'
-import Lists from './Lists'
+import ImageLists from './ImageLists'
 function ImageSearch() {
     return (
         <main className='home'>
@@ -16,7 +16,7 @@ function ImageSearch() {
                 <SearchFieldForSearch />
             </section>
             <section className='home__listings'>
-                <Lists />
+                {/* <ImageLists /> */}
             </section>
         </main>
     )
