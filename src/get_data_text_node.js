@@ -1,30 +1,30 @@
-const cheerio = require('cheerio');
-const axios = require('axios');
+// const cheerio = require('cheerio');
+// const axios = require('axios');
 
-axios.request('https://search.naver.com/search.naver?&where=news&query=%EB%8D%B8%ED%94%BC%EC%97%90%EB%A1%9C')
-    .then((response)=>{        
-        const $ = cheerio.load(response.data);
-        const da = []
-        $('.news_wrap.api_ani_send').each(function(i,data){
-            // const y = $(data).find('a.news_tit').attr('title');
-            if (i<3){
-            da.push({
-                img : $(data).find('img.thumb.api_get').attr('src'),
-                title : $(data).find('a.news_tit').attr('title'),
-                link : $(data).find('a.news_tit').attr('href')
-            })
-        }
+// axios.request('https://search.naver.com/search.naver?&where=news&query=%EB%8D%B8%ED%94%BC%EC%97%90%EB%A1%9C')
+//     .then((response)=>{        
+//         const $ = cheerio.load(response.data);
+//         const da = []
+//         $('.news_wrap.api_ani_send').each(function(i,data){
+//             // const y = $(data).find('a.news_tit').attr('title');
+//             if (i<3){
+//             da.push({
+//                 img : $(data).find('img.thumb.api_get').attr('src'),
+//                 title : $(data).find('a.news_tit').attr('title'),
+//                 link : $(data).find('a.news_tit').attr('href')
+//             })
+//         }
               
-        })
-        console.log(da);   
-    })
-    .catch(function(e){
-        console.log(e);
-    })
+//         })
+//         console.log(da);   
+//     })
+//     .catch(function(e){
+//         console.log(e);
+//     })
 
 // const cheerio = require('cheerio');
 // const axios = require('axios');
-// axios.get('https://www.bing.com/images/search?q=%EB%8D%B8%ED%94%BC%EC%97%90%EB%A1%9C&form=QBLH&sp=-1&pq=%EB%8D%B8%ED%94%BC%EC%97%90%EB%A1%9C&sc=1-4&qs=n&cvid=8554A7E4B7E142258ECDA6706C082FD2&first=1&tsc=ImageBasicHover')
+// axios.get('https://www.google.com/search?newwindow=1&tbm=isch&sxsrf=ALeKk02ArtsYlTH2TIydhODlm254Ms1Hxg%3A1609165126104&source=hp&biw=1920&bih=937&ei=RunpX_36A8j_wAOcxrDYAw&q=del+piero&oq=del+pi&gs_lcp=CgNpbWcQAxgAMgQIIxAnMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAOgcIIxDqAhAnUOMfWI08YNFFaARwAHgAgAGIAogB9gySAQUwLjUuNJgBAKABAaoBC2d3cy13aXotaW1nsAEK&sclient=img')
 //     .then((response)=>{
 //         const $ = cheerio.load(response.data);
 //         const da = []
@@ -43,3 +43,16 @@ axios.request('https://search.naver.com/search.naver?&where=news&query=%EB%8D%B8
 //     .catch(function(e){
 //         console.log(e);
 //     })
+
+var Scraper = require('images-scraper');
+ 
+const google = new Scraper({
+  puppeteer: {
+    headless: true,
+  }
+});
+ 
+(async () => {
+  const results = await google.scrape('네드베드', 30);
+  console.log(results);
+})();
