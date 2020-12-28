@@ -1,20 +1,22 @@
 const cheerio = require('cheerio');
 const axios = require('axios');
 
-axios.request('https://search.naver.com/search.naver?&where=news&query=%EB%8D%B8%ED%94%BC%EC%97%90%EB%A1%9C&sm=tab_tmr&frm=mr&nso=so:r,p:all,a:all&sort=0')
+axios.request('https://search.naver.com/search.naver?&where=news&query=%EB%8D%B8%ED%94%BC%EC%97%90%EB%A1%9C')
     .then((response)=>{        
         const $ = cheerio.load(response.data);
         const da = []
         $('.news_wrap.api_ani_send').each(function(i,data){
             // const y = $(data).find('a.news_tit').attr('title');
+            if (i<3){
             da.push({
                 img : $(data).find('img.thumb.api_get').attr('src'),
                 title : $(data).find('a.news_tit').attr('title'),
                 link : $(data).find('a.news_tit').attr('href')
             })
-            
-            console.log(da);     
+        }
+              
         })
+        console.log(da);   
     })
     .catch(function(e){
         console.log(e);

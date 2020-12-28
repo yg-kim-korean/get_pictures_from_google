@@ -3,6 +3,7 @@
   text-align: center;
   justify-content: center;
   width: 100%;
+  height: 100%;
   &__div1 {
     position: relative;
     width: 100%;
@@ -42,7 +43,7 @@
       &__icon {
         font-size: 30px;
         cursor: pointer;
-        margin-right: 4px;
+        margin-right: 10px;
       }
       &:hover {
         border: 1px solid #dfe1e5;
@@ -91,6 +92,14 @@
       position: absolute;
       margin-top: 0.8rem;
       margin-right: 1rem;
+    }
+  }
+}
+
+@media screen and (max-height: 600px) {
+  .SearchFieldForHome {
+    &__footer {
+      display: none;
     }
   }
 }

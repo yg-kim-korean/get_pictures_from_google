@@ -1,13 +1,26 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {FaSearchengin} from 'react-icons/fa'
 import {RiBookMarkLine} from 'react-icons/ri'
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory} from 'react-router-dom';
+import { settingSearchWord } from '../module/searchword';
 
 function SearchFieldForHome() {
-
-    const onHandle = (e) => {
-      e.preventDefault();
-      
+    const searchword = useSelector(state => state.searchword.searchword);
+    const [inputWord, setInputWord] = useState('');
+    const history = useHistory();
+    const dispatch = useDispatch();
+    useEffect(() => {
+      dispatch(settingSearchWord(inputWord))
+      if (searchword){
+        history.push('/searchnews')
+      }
+    }, [dispatch,inputWord,searchword])
+    
+    const onPress = (e) =>{
+      if (e.key ==='Enter'){
+        setInputWord(e.target.value);
+      }
     }
     return (
       <div className="SearchFieldForHome">
@@ -17,8 +30,8 @@ function SearchFieldForHome() {
         </div>
         <div className="SearchFieldForHome__div2">
           <div className="SearchFieldForHome__div2__div">
-            <FaSearchengin type="button" className="SearchFieldForHome__div2__div__icon" onClick={onHandle} />
-            <input type="text" className="SearchFieldForHome__div2__div__input" />
+            <FaSearchengin type="button" className="SearchFieldForHome__div2__div__icon" />
+            <input type="text" className="SearchFieldForHome__div2__div__input" onKeyDown={onPress} />
           </div>
         </div >
         <div className="SearchFieldForHome__div3">

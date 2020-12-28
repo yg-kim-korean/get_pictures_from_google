@@ -1,3 +1,5 @@
+import { SET_SEARCH_WORD } from "../module/types";
+
 //Promise 기반 thunk를 만들어주는 함수
 export const createPromiseThunk = (type, promiseCreator) => {
     const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`]
@@ -33,15 +35,25 @@ export const createPromiseThunkBySearch = (type, promiseCreator,SearchWord = def
         try{
             //결과물의 이름을 payload로 통일
             const payload = await promiseCreator(param);
-            console.log("페이로드"+payload);
             dispatch({ type:SUCCESS, payload})
         }
         catch(error) {
-            dispatch({ tYpe: ERROR, payload:error, error:true})
+            dispatch({ type: ERROR, payload:error, error:true})
         }
     }
 }
-
+export const setSearchWord = (type, searchword = defaultSelector) =>{
+    return param => async dispatch =>{
+        dispatch({type,meta:param});
+        try {
+            const getSearchWord = param;
+            dispatch({type,meta:getSearchWord})
+        }
+        catch(error){
+            console.log('검색어 설정 에러!');
+        }
+    }
+}
 
 export const createPromiseThunkById = (
     type,
@@ -106,7 +118,6 @@ export const handleAsyncActions = (type,key,keepData = false) =>{
                     [key]: reducerUtils.loading(keepData ? state[key].data : null)
                 }
             case SUCCESS:
-                console.log("성공");
                 return {
                     ...state,
                     [key] : reducerUtils.success(action.payload)
@@ -157,4 +168,22 @@ export const handleAsyncActionsById = (type,key,keepData = false) =>{
                 return state;
         }
     }
+}
+
+export const handleSetSearchWord= ( type, key) =>{ 
+    return (state,action)=>{
+        const word = action.meta;
+        switch (action.type){
+        case SET_SEARCH_WORD:
+            return {
+                ...state,
+                searchword : word
+            }
+        default:
+            return state
+        }
+        
+        
+    }
+
 }

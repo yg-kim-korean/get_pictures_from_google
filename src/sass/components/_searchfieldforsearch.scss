@@ -5,6 +5,8 @@
   padding: 8px 12px;
   &__div1 {
     font-size: 24px;
+    display: flex;
+    cursor: pointer;
     &__yg {
       font-weight: bold;
       margin-left: 10px;

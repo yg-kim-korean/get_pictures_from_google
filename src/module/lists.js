@@ -9,13 +9,16 @@ import {
     GET_LISTS_SUCCESS,
     GET_LIST_ERROR,
     GET_LIST_SUCCESS,
-    CLEAR_LIST
+    CLEAR_LIST,
+    GET_SEARCH_LISTS,
+    GET_SEARCH_LISTS_SUCCESS,
+    GET_SEARCH_LISTS_ERROR
     } 
     from './types';
 
 export const getLists = createPromiseThunk(GET_LISTS, listsAPI.getLists);
 export const getList = createPromiseThunkById(GET_LIST, listsAPI.getListById);
-export const getSearchList = createPromiseThunkBySearch(GET_LISTS, searchresultAPI.get_data_list);
+export const getSearchList = createPromiseThunkBySearch(GET_SEARCH_LISTS, searchresultAPI.get_data_list);
 export const clearList = () => ({ type: CLEAR_LIST });
 const initialState={
     lists : reducerUtils.initial(),
@@ -27,8 +30,11 @@ export default function lists(state = initialState, action) {
         case GET_LISTS:
         case GET_LISTS_SUCCESS:
         case GET_LISTS_ERROR:
-            // return handleAsyncActions(GET_LISTS,'lists',true)(state,action);
-            return handleAsyncActions(GET_LISTS,'searchlists',true)(state,action);
+            return handleAsyncActions(GET_LISTS,'lists',true)(state,action);
+        case GET_SEARCH_LISTS:
+        case GET_SEARCH_LISTS_ERROR:
+        case GET_SEARCH_LISTS_SUCCESS:
+            return handleAsyncActions(GET_SEARCH_LISTS,'searchlists',true)(state,action);
         case GET_LIST:
         case GET_LIST_SUCCESS:
         case GET_LIST_ERROR:

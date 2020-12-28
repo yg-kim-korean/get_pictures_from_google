@@ -1,0 +1,30 @@
+.middleBarForSearch {
+  width: 100%;
+  padding: 0 100px;
+  border: 1px solid#cdcfd3;
+  height: 45px;
+  &__ul {
+    display: flex;
+    flex-direction: row;
+    margin-top: 7px;
+    align-content: center;
+    &__li {
+      border: 1px solid#edeff1;
+      width: 70px;
+      height: 30px;
+      line-height: 30px;
+      cursor: pointer;
+      &__div {
+        font-size: 15px;
+        text-align: center;
+      }
+      &:hover {
+        outline: auto;
+        outline-color: #c9c4c7;
+      }
+      & + & {
+        margin-left: 20px;
+      }
+    }
+  }
+}
