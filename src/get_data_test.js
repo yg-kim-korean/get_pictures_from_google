@@ -43,4 +43,23 @@
 //     .catch(function(e){
 //         console.log(e);
 //     })
+const axios = require('axios');
 
+    const IdKey = 'upDSQXUZEo0WIKF0P34h'
+    const SecretKey ='CcHRc5JmM0'
+    //https://cors-anywhere.herokuapp.com/ 추가로 cors 에러 삭제
+    //네이버 API사용
+    const {data:{items}} = 
+            axios.get(`https://openapi.naver.com/v1/search/image.json`,{
+                                params:{
+                                query:'델피에로',
+                                display:20
+                                },
+                                headers:{
+                                'X-Naver-Client-Id':IdKey,
+                                'X-Naver-Client-Secret' : SecretKey
+                                }
+                            });
+        
+    console.log(items);
+    // return items

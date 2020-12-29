@@ -1,4 +1,4 @@
-import {get_data_list} from '../api/searchresult';
+import {get_data_list, get_image_list} from '../api/searchresult';
 import { createPromiseThunkBySearch, handleAsyncActions, reducerUtils } from '../lib/asyncUtils';
 import {
     GET_IMAGE_LISTS,
@@ -6,7 +6,7 @@ import {
     GET_IMAGE_LISTS_SUCCESS} from './types'
 
 
-export const getImageLists = createPromiseThunkBySearch(GET_IMAGE_LISTS, get_data_list);
+export const getImageLists = createPromiseThunkBySearch(GET_IMAGE_LISTS, get_image_list);
 
 const initialState={
     imagelists: reducerUtils.initial()

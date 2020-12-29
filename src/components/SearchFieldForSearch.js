@@ -26,7 +26,8 @@ function SearchFieldForSearch() {
     }
     
     const handleClick = () =>{
-      settingSearchWord('')
+      
+      dispatch(settingSearchWord(''))
       history.push('/');
     }
   

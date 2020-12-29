@@ -22,19 +22,15 @@ function ImageLists() {
     if (!data ) return <div>검색어를 입력하시오</div>;
     return (
 
-        <div className="page">
-            <div className="lists">
-                <ul className="lists__ul">
-                    {data.map(item => (
-                        <a href={item.link} key={item.index}>
-                            <li className="lists__list" key={item.index} onClick={(e) => {onHandle(item.index)}} >
-                                <img className="lists__list__img" src={item.img} alt={item.title} />
-                                <div className="lists__list__text">{item.title}</div>
-                            </li>
-                        </a>
-                    ))}
-                </ul>
-                </div>
+        <div className="ImageLists">
+            <ul className="ImageLists__ul">
+                {data.map((item,index) => (
+                        <li className="ImageLists__ul__li" key={index} onClick={(e) => {onHandle(item.index)}} >
+                            <img className="ImageLists__ul__li__img" src={item.link} alt={item.title} />
+                        </li>
+                ))}
+            </ul>
+               
             
             {/* {   
                 id ?

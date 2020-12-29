@@ -1,0 +1,15 @@
+.ImageLists {
+  display: grid;
+  padding: 20px 20px;
+  grid-auto-flow: dense;
+  &__ul {
+    &__li {
+      &__img {
+        border-radius: 2%;
+        cursor: pointer;
+        &:hover {
+        }
+      }
+    }
+  }
+}

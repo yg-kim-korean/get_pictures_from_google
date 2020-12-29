@@ -39,3 +39,24 @@ export async function get_data_list(search_word) {
     
     return data
 }
+
+export async function get_image_list(search_word) {
+    const IdKey = 'upDSQXUZEo0WIKF0P34h'
+    const SecretKey ='CcHRc5JmM0'
+    //https://cors-anywhere.herokuapp.com/ 추가로 cors 에러 삭제
+    //네이버 API사용
+    const {data:{items}} = 
+            await axios.get(`https://cors-anywhere.herokuapp.com/https://openapi.naver.com/v1/search/image.json`,{
+                                params:{
+                                query:search_word,
+                                display:20
+                                },
+                                headers:{
+                                'X-Naver-Client-Id':IdKey,
+                                'X-Naver-Client-Secret' : SecretKey
+                                }
+                            });
+        
+    console.log(items);
+    return items
+}
