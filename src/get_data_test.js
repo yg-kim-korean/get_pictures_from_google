@@ -44,15 +44,3 @@
 //         console.log(e);
 //     })
 
-var Scraper = require('images-scraper');
- 
-const google = new Scraper({
-  puppeteer: {
-    headless: true,
-  }
-});
- 
-(async () => {
-  const results = await google.scrape('네드베드', 30);
-  console.log(results);
-})();

@@ -170,7 +170,7 @@ export const handleAsyncActionsById = (type,key,keepData = false) =>{
     }
 }
 
-export const handleSetSearchWord= ( type, key) =>{ 
+export const handleSetSearchWord= ( type, key,keepData=false) =>{ 
     return (state,action)=>{
         const word = action.meta;
         switch (action.type){

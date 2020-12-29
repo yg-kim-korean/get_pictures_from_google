@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { clearList, getList } from '../module/lists';
+import {  getList } from '../module/searchlists';
 
 function List({id}) {
-  const {data, loading, error} = useSelector(state=>state.lists.list[id])
+  const {data, loading, error} = useSelector(state=>state.searchlists.list[id])
   || {
     loading:false,
     data: null,
@@ -17,7 +17,7 @@ function List({id}) {
   }, [dispatch,id])
   const onHandleList = (e) => {
     e.preventDefault();
-    dispatch(clearList());
+    // dispatch(clearList());
   }
   if (loading&&!data) return <div>로딩 중...</div>
   if (error) return <div>에러발생</div>

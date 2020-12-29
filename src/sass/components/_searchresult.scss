@@ -6,17 +6,20 @@
   &__ul {
     &__li {
       border: 1px solid#edeff1;
-      width: 50%;
+      width: 60%;
       &__a {
         display: flex;
         flex-direction: row;
         padding: 2rem 0;
-        width: 900px;
+        width: 1000px;
         &__div {
           padding: 0px 30px;
           margin-top: 25px;
           width: 800px;
           line-height: 130px;
+          &:hover {
+            font-weight: bold;
+          }
         }
         &__img {
           width: 300px;

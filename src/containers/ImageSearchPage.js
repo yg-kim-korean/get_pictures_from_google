@@ -1,16 +1,16 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import SearchFieldForSearch from './SearchFieldForSearch'
-import MiddleBarForSearch from './MiddleBarForSearch'
-import SearchResult from './SearchResult'
-function SearchPage() {
+import SearchFieldForSearch from '../components/SearchFieldForSearch'
+import ImageLists from '../components/ImageLists'
+import MiddleBarForSearch from '../components/MiddleBarForSearch'
+function ImageSearchPage() {
     return (
-        <main className='SearchPage'>
+        <main className='home'>
             <Helmet>
-                <title>Search Page</title>
+                <title>Image Search Page</title>
                 <meta
                     name='description'
-                    content='검색 홈'
+                    content='이미지 페이지'
                 />
             </Helmet>
             <section className='SearchPage__nav'>
@@ -20,10 +20,10 @@ function SearchPage() {
                 <MiddleBarForSearch />
             </section>
             <section className='SearchPage__lists'>
-                <SearchResult />
+                <ImageLists />
             </section>
         </main>
     )
 }
 
-export default SearchPage
+export default ImageSearchPage

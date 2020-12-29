@@ -7,13 +7,12 @@ import rootReducer from './module';
 import reportWebVitals from './reportWebVitals';
 import reduxThunk from 'redux-thunk'
 import { Provider } from 'react-redux';
-
-
 const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(reduxThunk))
   )
 ReactDOM.render(
+  
   <Provider store = {store}>
     <App />
     </Provider>,

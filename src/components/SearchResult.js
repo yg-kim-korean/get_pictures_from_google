@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getSearchList } from '../module/lists';
+import { getSearchList } from '../module/searchlists';
 
 function SearchResult() {
-    const {data, loading, error} = useSelector(state=>state.lists.searchlists)
+    const {data, loading, error} = useSelector(state=>state.searchlists.searchlists)
     const dispatch = useDispatch()
     const searchword = useSelector(state => state.searchword.searchword)
     useEffect(()=>{
-        dispatch(getSearchList(searchword));
+        if(searchword){
+            dispatch(getSearchList(searchword))
+        }
     },[dispatch,searchword])
     
     if (loading&&!data) return <div>로딩 중...</div>

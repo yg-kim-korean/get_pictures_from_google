@@ -1,6 +1,6 @@
 import axios from 'axios'
 import cheerio from 'cheerio'
-import Scraper from 'images-scraper';
+
 // export async function get_data_list(search_word) {
 //     const data = []
 //     for (let x = 1; x <= 3; x+=1){
@@ -37,14 +37,5 @@ export async function get_data_list(search_word) {
 
         })
     
-    return data
-}
-export async function get_data_Image_list(search_word) {
-    const google = new Scraper({
-        puppeteer: {
-          headless: true,
-        }
-      });
-    const data = await google.scrape(search_word, 30);
     return data
 }
