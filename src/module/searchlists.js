@@ -42,7 +42,7 @@ export default function lists(state = initialState, action) {
         case CLEAR_SEARCH_LIST:
             return {
                 ...state,
-                list:reducerUtils.initial()
+                searchlists:reducerUtils.initial()
             };
         default:
             return state;

@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet'
 import SearchFieldForSearch from '../components/SearchFieldForSearch'
 import MiddleBarForSearch from '../components/MiddleBarForSearch'
 import SearchResult from '../components/SearchResult'
+import Footer from '../components/Footer'
 function SearchPage() {
     return (
         <main className='SearchPage'>
@@ -21,6 +22,9 @@ function SearchPage() {
             </section>
             <section className='SearchPage__lists'>
                 <SearchResult />
+            </section>
+            <section>
+                <Footer />
             </section>
         </main>
     )

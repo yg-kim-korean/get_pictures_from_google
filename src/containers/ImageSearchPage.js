@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet'
 import SearchFieldForSearch from '../components/SearchFieldForSearch'
 import ImageLists from '../components/ImageLists'
 import MiddleBarForSearch from '../components/MiddleBarForSearch'
+import Footer from '../components/Footer'
 function ImageSearchPage() {
     return (
         <main className='home'>
@@ -21,6 +22,9 @@ function ImageSearchPage() {
             </section>
             <section className='SearchPage__lists'>
                 <ImageLists />
+            </section>
+            <section>
+                <Footer />
             </section>
         </main>
     )

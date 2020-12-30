@@ -30,11 +30,11 @@ function SearchFieldForHome() {
       <div className="SearchFieldForHome">
         <div className="SearchFieldForHome__div1">
           <VscQuote className="SearchFieldForHome__div1__icon" />
-          <Link className="SearchFieldForHome__div1__YG" to="/" >Y G</Link>
+          <Link className="SearchFieldForHome__div1__YG" to="/" >YG</Link>
         </div>
         <div className="SearchFieldForHome__div2">
           <div className="SearchFieldForHome__div2__div">
-            <FaSearchengin type="button" className="SearchFieldForHome__div2__div__icon" />
+            <div  className="SearchFieldForHome__div2__div__icon"><FaSearchengin type="button" /></div>
             <input type="text" className="SearchFieldForHome__div2__div__input" onKeyDown={onPress} />
           </div>
         </div >
@@ -43,10 +43,6 @@ function SearchFieldForHome() {
             <Link to="/searchnews" className="SearchFieldForHome__div3__div__link"><input type="submit" className="SearchFieldForHome__div3__div__input" value="YG Search" /></Link>
             <input type="submit" className="SearchFieldForHome__div3__div__input" value="I'm Feeling Lucky" />
           </div>
-        </div>
-        <div className="SearchFieldForHome__footer">
-          <div className="SearchFieldForHome__footer__div">Contact Us</div>
-          
         </div>
       </div>
     )

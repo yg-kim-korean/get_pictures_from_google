@@ -1,5 +1,6 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
+import Footer from '../components/Footer'
 import SearchFieldForHome from '../components/SearchFieldForHome'
 
 function HomePage() {
@@ -15,7 +16,9 @@ function HomePage() {
             <section className='home__search'>
                 <SearchFieldForHome />
             </section>
-            
+            <section>
+                <Footer />
+            </section>
         </main>
     )
 }

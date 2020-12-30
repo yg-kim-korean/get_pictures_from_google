@@ -12,9 +12,11 @@ function SearchResult() {
         }
     },[dispatch,searchword])
     
-    if (loading&&!data) return <div>로딩 중...</div>
-    if (error) return <div>에러 발생</div>
-    if (!data ) return <div>검색어를 입력하시오</div>;
+
+
+    if (loading&&!data) return <div className="loading">로딩 중...</div>
+    if (error) return <div className="loading">에러 발생</div>
+    if (!data ) return <div className="loading">검색어를 입력하세요</div>;
     return (
         <div className="SearchResult">
             <ul className="SearchResult__ul">
@@ -24,10 +26,12 @@ function SearchResult() {
                             <a href={item.link} className="SearchResult__ul__li__a">
                                 <div className="SearchResult__ul__li__a__div">{item.title}</div>
                                 <img src={item.img} alt="" className="SearchResult__ul__li__a__img"/>
+                                <div className="SearchResult__ul__li__a__div2">{item.text}</div>
                             </a>
                         </li>    
                     ))
                 }
+     
             </ul>
         </div>
     )

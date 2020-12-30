@@ -31,7 +31,8 @@ export async function get_data_list(search_word) {
                     index : i,
                     img : $(e).find('img.thumb').attr('src'),
                     title : $(e).find('a.news_tit').attr('title'),
-                    link : $(e).find('a.news_tit').attr('href')
+                    link : $(e).find('a.news_tit').attr('href'),
+                    text: $(e).find('a.api_txt_lines.dsc_txt_wrap').text()
                     //      title: $(elem).find('h2.entry-title').text(),
             })
 
@@ -49,7 +50,7 @@ export async function get_image_list(search_word) {
             await axios.get(`https://cors-anywhere.herokuapp.com/https://openapi.naver.com/v1/search/image.json`,{
                                 params:{
                                 query:search_word,
-                                display:20
+                                display:40
                                 },
                                 headers:{
                                 'X-Naver-Client-Id':IdKey,

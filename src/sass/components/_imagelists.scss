@@ -1,14 +1,59 @@
 .ImageLists {
-  display: grid;
-  padding: 20px 20px;
-  grid-auto-flow: dense;
-  &__ul {
-    &__li {
+  columns: 6;
+  column-gap: 16px;
+  padding: 15px 15px;
+  padding-bottom: 45px;
+  &__div {
+    display: inline-block;
+    margin-bottom: 16px;
+    position: relative;
+    cursor: pointer;
+
+    &:before {
+      border-radius: 5px;
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+    &__img {
+      border-radius: 2%;
+      width: 100%;
+    }
+    &__div {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      padding: 30px 30px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  &__modal {
+    &__div {
+      margin-top: -250px;
+      max-width: 450px;
+      max-height: 350px;
+      background-color: none;
       &__img {
-        border-radius: 2%;
+        width: 100%;
+      }
+      &__div {
+        padding: 0 30px;
+
+        color: #fff;
+      }
+      &__icon {
+        color: #fff;
+        padding-left: 225px;
         cursor: pointer;
-        &:hover {
-        }
+        font-size: 30px;
       }
     }
   }
