@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getImageLists } from '../module/imagelists';
 import Modal from 'react-awesome-modal';
-
+import { getSearchList } from '../module/searchlists';
 
 function ImageLists() {
-    const {data, loading, error} = useSelector(state=>state.imagelists.imagelists);
+    
+    const {data, loading, error} = useSelector(state=>state.searchlists.searchlists)
     const searchword = useSelector(state => state.searchword.searchword);
     const [selectedSrc,setSelectedSrc] = useState('');
     const [selectedTitle,setSelectedTitle] = useState('');
@@ -13,11 +13,12 @@ function ImageLists() {
     const dispatch = useDispatch();
     useEffect(() => {
         if (searchword){
-        dispatch(getImageLists(searchword))
+    
+        dispatch(getSearchList(searchword))
         }
     }, [dispatch,searchword])
     const openModal = (select) => {
-        setSelectedSrc(select.link)
+        setSelectedSrc(select.img)
         setSelectedTitle(select.title)
        setVisible(true);
     }
@@ -30,19 +31,19 @@ function ImageLists() {
     if (!data ) return <div className="loading">검색어를 입력하세요</div>;
     return (
 
-        <div className="ImageLists">
-                {data.map((item,index) => (
-                    index ? (
-                    <div className="ImageLists__div" key={index} onClick={() => {openModal(item)}}>
-                        <img className="ImageLists__div__img" src={item.link} alt={item.title}/>
-                        <div className="ImageLists__div__div" src={item.link}></div>
+        <div className="ImageListsFromAxios">
+                {data.map(item => (
+                    
+                    <div className="ImageListsFromAxios__div" key={item.index} onClick={() => {openModal(item)}}>
+                        <img className="ImageListsFromAxios__div__img" src={item.img} alt={item.title}/>
+                        <div className="ImageListsFromAxios__div__div"></div>
                     </div>
-                    ) :null
+
                 ))}
-                <Modal className="ImageLists__modal" visible={visible} effect="fadeInUp" onClickAway={() => closeModal()}>
-                    <div className="ImageLists__modal__div">
-                        <img className="ImageLists__modal__div__img" src={selectedSrc} alt={selectedTitle} />
-                        <div className="ImageLists__modal__div__div">{selectedTitle}</div>
+                <Modal className="ImageListsFromAxios__modal" visible={visible} effect="fadeInUp" onClickAway={() => closeModal()}>
+                    <div className="ImageListsFromAxios__modal__div">
+                        <img className="ImageListsFromAxios__modal__div__img" src={selectedSrc} alt={selectedTitle} />
+                        <div className="ImageListsFromAxios__modal__div__div">{selectedTitle}</div>
                         
                     </div>
                 </Modal>
