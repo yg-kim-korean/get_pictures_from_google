@@ -36,10 +36,11 @@
     }
   }
   &__modal {
+    width: 100%;
     &__div {
-      margin-top: -250px;
-      max-width: 450px;
-      max-height: 350px;
+      // margin-top: -250px;
+      // max-width: 450px;
+      // max-height: 350px;
       background-color: none;
       &__img {
         width: 100%;

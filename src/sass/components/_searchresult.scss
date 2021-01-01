@@ -7,7 +7,8 @@
   padding-bottom: 45px;
   &__ul {
     border: 1px solid#edeff1;
-    width: 55%;
+    align-items: center;
+    width: 80%;
     border-radius: 10px;
     background-color: white;
     &__li {
@@ -16,7 +17,7 @@
         display: grid;
         flex-direction: row;
         margin: 1rem 0;
-        width: 800px;
+
         grid-template-rows: repeat(2);
         grid-template-areas:
           "div img"
@@ -24,17 +25,16 @@
         &__div {
           padding-left: 30px;
           margin-top: 45px;
-          width: 650px;
+
           font-size: 20px;
           &:hover {
             font-weight: bold;
           }
         }
         &__img {
-          width: 280px;
           height: 180px;
           transform: scale(1);
-
+          padding: 0 30px;
           &:hover {
             transition: 0.5s ease-in-out;
             transform: scale(1.03);
@@ -43,7 +43,7 @@
         &__div2 {
           margin-top: -90px;
           padding-left: 30px;
-          width: 600px;
+
           font-size: 15px;
         }
       }
