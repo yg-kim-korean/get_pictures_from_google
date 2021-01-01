@@ -40,7 +40,9 @@ function ImageLists() {
                     </div>
 
                 ))}
-                <Modal className="ImageListsFromAxios__modal" visible={visible} effect="fadeInUp" onClickAway={() => closeModal()}>
+                <Modal className="ImageListsFromAxios__modal" 
+                width="450" height="350"
+                visible={visible} effect="fadeInUp" onClickAway={() => closeModal()}>
                     <div className="ImageListsFromAxios__modal__div">
                         <img className="ImageListsFromAxios__modal__div__img" src={selectedSrc} alt={selectedTitle} />
                         <div className="ImageListsFromAxios__modal__div__div">{selectedTitle}</div>

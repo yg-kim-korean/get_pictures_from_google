@@ -1,4 +1,4 @@
-import { SET_SEARCH_WORD } from "../module/types";
+import { SET_NOW_PAGE, SET_SEARCH_WORD } from "../module/types";
 
 //Promise 기반 thunk를 만들어주는 함수
 export const createPromiseThunk = (type, promiseCreator) => {
@@ -51,6 +51,18 @@ export const setSearchWord = (type, searchword = defaultSelector) =>{
         }
         catch(error){
             console.log('검색어 설정 에러!');
+        }
+    }
+}
+export const setNowPage = (type, nowpage = defaultSelector) =>{
+    return param => async dispatch =>{
+        dispatch({type,meta:param});
+        try {
+            const nowPage = param;
+            dispatch({type,meta:nowPage})
+        }
+        catch(error){
+            console.log('지금 페이지 설정 에러!');
         }
     }
 }
@@ -178,6 +190,23 @@ export const handleSetSearchWord= ( type, key,keepData=false) =>{
             return {
                 ...state,
                 searchword : word
+            }
+        default:
+            return state
+        }
+        
+        
+    }
+
+}
+export const handleSetNowPage= ( type, key,keepData=false) =>{ 
+    return (state,action)=>{
+        const word = action.meta;
+        switch (action.type){
+        case SET_NOW_PAGE:
+            return {
+                ...state,
+                nowpage : word
             }
         default:
             return state

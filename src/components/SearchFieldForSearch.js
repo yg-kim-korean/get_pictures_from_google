@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {settingSearchWord} from '../module/searchword';
 import { clearImageList } from '../module/imagelists';
 import { clearSearchList } from '../module/searchlists';
+import { settingNowPage } from '../module/setnowpage';
 function SearchFieldForSearch() {
   const searchword = useSelector(state => state.searchword.searchword);
   const [inputWord, setInputWord] = useState('');
@@ -31,14 +32,15 @@ function SearchFieldForSearch() {
       dispatch(clearImageList())
       dispatch(clearSearchList)
       dispatch(settingSearchWord(''))
+      dispatch(settingNowPage(''))
       history.push('/');
     }
   
      return (
       <nav className="SearchFieldForSearch">
         <div className="SearchFieldForSearch__div1">
-          <VscQuote className="SearchFieldForSearch__div1__icon" />
-          <div className="SearchFieldForSearch__div1__yg" onClick={handleClick} >YG</div>
+          <VscQuote width="0" height="0" className="SearchFieldForSearch__div1__icon" />
+          <div className="SearchFieldForSearch__div1__yg" onClick={handleClick} >Y G</div>
         </div>
         <div className="SearchFieldForSearch__div2">
           <input type="text" className="SearchFieldForSearch__div2__input" defaultValue={searchword ? searchword : null} placeholder="Search..." onKeyDown={onPress}/>

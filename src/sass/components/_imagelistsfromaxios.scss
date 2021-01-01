@@ -8,7 +8,7 @@
     margin-bottom: 16px;
     position: relative;
     cursor: pointer;
-    width: 450px;
+    width: 97%;
     &:before {
       border-radius: 5px;
       content: "";
@@ -41,6 +41,7 @@
       background-color: none;
       &__img {
         width: 100%;
+        border-radius: 24px;
       }
       &__div {
         padding: 0 30px;

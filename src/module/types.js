@@ -12,3 +12,4 @@ export const CLEAR_IMAGE_LIST= 'CLEAR_IMAGE_LIST';
 export const CLEAR_IMAGE_LIST2= 'CLEAR_IMAGE_LIST2';
 
 export const SET_SEARCH_WORD = 'SET_SEARCH_WORD';
+export const SET_NOW_PAGE = 'SET_NOW_PAGE';

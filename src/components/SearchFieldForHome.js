@@ -4,6 +4,7 @@ import {VscQuote} from 'react-icons/vsc'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory} from 'react-router-dom';
 import { settingSearchWord } from '../module/searchword';
+import { settingNowPage } from '../module/setnowpage';
 
 function SearchFieldForHome() {
     const searchword = useSelector(state => state.searchword.searchword);
@@ -18,6 +19,7 @@ function SearchFieldForHome() {
         dispatch(settingSearchWord(inputWord))
       }
       if (searchword){
+        dispatch(settingNowPage('news'))
         history.push('/searchnews')
       }
     }, [dispatch,inputWord,searchword,history])
@@ -31,7 +33,7 @@ function SearchFieldForHome() {
       <div className="SearchFieldForHome">
         <div className="SearchFieldForHome__div1">
           <VscQuote className="SearchFieldForHome__div1__icon" />
-          <Link className="SearchFieldForHome__div1__YG" to="/" >YG</Link>
+          <Link className="SearchFieldForHome__div1__YG" to="/" >Y G</Link>
         </div>
         <div className="SearchFieldForHome__div2">
           <div className="SearchFieldForHome__div2__div">

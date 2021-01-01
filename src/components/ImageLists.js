@@ -39,7 +39,12 @@ function ImageLists() {
                     </div>
                     ) :null
                 ))}
-                <Modal className="ImageLists__modal" visible={visible} effect="fadeInUp" onClickAway={() => closeModal()}>
+                <Modal className="ImageLists__modal" 
+                    width="400"
+                    height="350" 
+                    visible={visible} 
+                    effect="fadeInUp" 
+                    onClickAway={() => closeModal()}>
                     <div className="ImageLists__modal__div">
                         <img className="ImageLists__modal__div__img" src={selectedSrc} alt={selectedTitle} />
                         <div className="ImageLists__modal__div__div">{selectedTitle}</div>
