@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import {FaSearchengin} from 'react-icons/fa'
 import {VscQuote} from 'react-icons/vsc'
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,10 +8,11 @@ import { settingSearchWord } from '../module/searchword';
 function SearchFieldForHome() {
     const searchword = useSelector(state => state.searchword.searchword);
     const [inputWord, setInputWord] = useState('');
+    const inputRef = useRef();
     const history = useHistory();
     const dispatch = useDispatch();
     useEffect(() => {
-
+      inputRef.current.focus();
       if (inputWord)
       {
         dispatch(settingSearchWord(inputWord))
@@ -35,7 +36,7 @@ function SearchFieldForHome() {
         <div className="SearchFieldForHome__div2">
           <div className="SearchFieldForHome__div2__div">
             <div  className="SearchFieldForHome__div2__div__icon"><FaSearchengin type="button" /></div>
-            <input type="text" className="SearchFieldForHome__div2__div__input" onKeyDown={onPress} />
+            <input type="text" className="SearchFieldForHome__div2__div__input" ref={inputRef} onKeyDown={onPress} />
           </div>
         </div >
         <div className="SearchFieldForHome__div3">

@@ -32,7 +32,7 @@ export async function get_data_list(search_word) {
         const $ = await cheerio.load(html.data)
         $('.news_wrap.api_ani_send').each((i,e) => {
             data.push({
-                    index : i,
+                    index : i+x,
                     img : $(e).find('img.thumb').attr('src'),
                     title : $(e).find('a.news_tit').attr('title'),
                     link : $(e).find('a.news_tit').attr('href'),
